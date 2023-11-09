@@ -2,6 +2,12 @@
   "name": "storyblok-solr-indexer",
   "version": "0.1.1",
   "description": "Storyblok Solr Indexer",
+  "author": "Nils Dehl <nils.dehl@dkd.de>",
+  "homepage": "https://github.com/dkd/storyblok-solr-indexer#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dkd/storyblok-solr-indexer.git"
+  },
   "exports": "./StoryblokSolrIndexer.mjs",
   "type": "module",
   "scripts": {
@@ -16,7 +22,6 @@
     "javascript",
     "search"
   ],
-  "author": "Nils Dehl <nils.dehl@dkd.de>",
   "license": "ISC",
   "dependencies": {
     "storyblok-js-client": "^6.2.0"
