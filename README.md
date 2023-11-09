@@ -9,10 +9,9 @@ Install package
 npm install storyblok-solr-indexer
 ```
 
-
-
 ### Example Usage
 
+indexer.js
 ```
 import 'dotenv/config'
 import StoryblokSolrIndexer from 'storyblok-solr-indexer'
@@ -37,6 +36,12 @@ const solrOptions = {
 }
 
 new StoryblokSolrIndexer(storyblockOptions, solrOptions)
+```
+
+Run in Terminal
+
+```
+node indexer.js
 ```
 
 ## Hosted Solr
