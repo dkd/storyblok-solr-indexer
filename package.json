@@ -1,8 +1,8 @@
 {
   "name": "storyblok-solr-indexer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Storyblok Solr Indexer",
-  "main": "index.js",
+  "exports": "./StoryblokSolrIndexer.mjs",
   "type": "module",
   "scripts": {
     "dev": "node test.js",
