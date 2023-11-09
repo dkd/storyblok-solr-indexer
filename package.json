@@ -1,0 +1,27 @@
+{
+  "name": "storyblok-solr-indexer",
+  "version": "0.1.0",
+  "description": "Storyblok Solr Indexer",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node test.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "storyblok",
+    "indexer",
+    "solr",
+    "node.js",
+    "javascript",
+    "search"
+  ],
+  "author": "Nils Dehl <nils.dehl@dkd.de>",
+  "license": "ISC",
+  "dependencies": {
+    "storyblok-js-client": "^6.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
