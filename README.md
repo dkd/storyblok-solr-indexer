@@ -1,6 +1,6 @@
 # Storyblok Solr Indexer
 
-Indexer to index Storyblok stories in solr. 
+Indexer to index Storyblok stories in Solr. 
 
 ## Usage
 
@@ -44,6 +44,18 @@ Run in Terminal
 node indexer.js
 ```
 
+## NPM Package
+
+https://www.npmjs.com/package/storyblok-solr-indexer
+
+## Cloudflare
+
+You can find a cloudflare worker using the indexer here: 
+
+https://github.com/dkd/cloudflare-worker-storyblok-solr-indexer
+
 ## Hosted Solr
+
+You can host your Solr core here:
 
 https://hosted-solr.com/de/
