@@ -24,9 +24,9 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "storyblok-js-client": "^6.2.0"
+    "storyblok-js-client": "^6.6.4"
   },
   "devDependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.4.1"
   }
 }
