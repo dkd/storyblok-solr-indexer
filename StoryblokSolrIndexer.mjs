@@ -99,10 +99,10 @@ class StoryblokSolrIndexer {
 	 * @param {number} page - The page number of the results to retrieve, with a default value of 1.
 	 * @returns {Promise} - A promise that resolves to the response of the Storyblok API request.
 	 */
-	fetchStories(page = 1) {
+	async fetchStories(page = 1) {
 		// Executes a GET request to the Storyblok API using the predefined client instance.
 		// It combines predefined options with the page number for paginated results.
-		return this.storyblokApiClient.get('cdn/stories/', { ...this.storyblokOptions, page });
+		return await this.storyblokApiClient.get('cdn/stories/', { ...this.storyblokOptions, page });
 	}
 
 	/**
@@ -111,10 +111,10 @@ class StoryblokSolrIndexer {
 	 * @param {string} storyId - The unique identifier for the story to be retrieved.
 	 * @returns {Promise} - A Promise that resolves with the response from the Storyblok API containing the requested story data.
 	 */
-	getStoryById(storyId) {
+	async getStoryById(storyId) {
 		// Makes an API call using the Storyblok client instance to get the data of a specific story. 
 		// The storyId parameter is interpolated into the URL to specify which story to fetch.
-		return this.storyblokApiClient.get(`cdn/stories/${storyId}`);
+		return await this.storyblokApiClient.get(`cdn/stories/${storyId}`);
 	}
 
 	/**
@@ -214,7 +214,7 @@ class StoryblokSolrIndexer {
 			const userPass = `${this.solr.user}:${this.solr.pass}`;
 
 			// Encode the username and password in base64 format for the Authorization header (Node.js compatible method).
-			const base64UserPass = Buffer.from(userPass).toString('base64');
+			const base64UserPass = btoa(userPass);
 
 			// Convert the documents to a JSON string as the request body.
 			const body = JSON.stringify(docs)

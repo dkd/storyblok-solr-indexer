@@ -7,7 +7,7 @@ dotenv@^16.4.1:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.5.tgz#cdd3b3b604cb327e286b4762e13502f717cb099f"
   integrity sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==
 
-storyblok-js-client@^6.6.4:
-  version "6.7.1"
-  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.7.1.tgz#9b9ac8221d7e16dc9e63e5ddf547c1493d3f9cae"
-  integrity sha512-VOobZkor6BESji2MJUuO5jTIZeCWMUMR2LZtdSEEAtUDUfKwA88lGqDVMQqtWZ8nD7NzhZ6S7qvdv5Or9HZXRw==
+storyblok-js-client@^6.7.1:
+  version "6.7.2"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-6.7.2.tgz#504cb16b9ace924e9afbf7238b6bcb7035342e5b"
+  integrity sha512-5+cCZQhvIPSP5fin7jMUyyiAfV3FSbhH2q0YmDpb8NqxsY0pog6r+igHshVXNHed5yB5AZcVn0Mduao0X1MdBA==
