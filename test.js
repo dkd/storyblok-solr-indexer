@@ -23,6 +23,7 @@ const storyblockOptions = {
 		options: {
 				starts_with: '',
 				'filter_query[component][in]': 'Page',
+				'filter_query[doNotIndex][is]': false,
 				per_page: 100,
 				page: 1,
 				version: 'published'
