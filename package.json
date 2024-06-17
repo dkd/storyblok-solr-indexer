@@ -1,6 +1,6 @@
 {
   "name": "storyblok-solr-indexer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Storyblok Solr Indexer",
   "author": "Nils Dehl <nils.dehl@dkd.de>",
   "homepage": "https://github.com/dkd/storyblok-solr-indexer#readme",

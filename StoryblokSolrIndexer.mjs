@@ -125,7 +125,10 @@ class StoryblokSolrIndexer {
 	 */
 	prepareSolrDoc(story) {
 		// Extracts all textual values from the story's content using a helper function.
-		let contentStrings = this.findAllTextValues(story.content);
+		const contentStrings = this.findAllTextValues(story.content);
+
+		// Admiral Cloud Image UUID
+		const admiralCloudImageUuid = this.findAdmiralCloudImageUuid(story);
 
 		// Constructs the Solr document with required and additional fields.
 		let doc = {
@@ -135,6 +138,7 @@ class StoryblokSolrIndexer {
 			url: story.full_slug, // URL slug for the story.
 			title: story.name, // Name of the story.
 			content: contentStrings.join(' '), // Aggregate content string created by joining all text values with a space.
+			admiralCloudImageUuid_stringS: admiralCloudImageUuid ? admiralCloudImageUuid : '' // UUID admiral cloud image
 		};
 
 		// Returns the constructed document which is ready for indexing.
@@ -172,26 +176,26 @@ class StoryblokSolrIndexer {
 	}
 
 	/**
-     * Asynchronously clears all documents from the Solr search index.
-     */
+		 * Asynchronously clears all documents from the Solr search index.
+		 */
 	async clearSolrIndex() {
 		// Prepare the delete command to clear the entire index.
 		// The JSON body for the delete command uses '*:*' to match all documents.
 		const deleteCommand = { "delete": { "query": "*:*" } };
 
 		try {
-				// Execute the delete command by making a request to the Solr API.
-				const response = await this.doSolrRequest(deleteCommand);
-				
-				// Log the successful clearing of the index.
-				console.log('Successfully cleared the Solr index.', response);
+			// Execute the delete command by making a request to the Solr API.
+			const response = await this.doSolrRequest(deleteCommand);
+
+			// Log the successful clearing of the index.
+			console.log('Successfully cleared the Solr index.', response);
 		} catch (error) {
-				// In case of an error during the deletion process, log the error.
-				console.error('Error clearing the Solr index:', error);
-				// Optionally, rethrow the error to allow calling code to handle it.
-				throw error;
+			// In case of an error during the deletion process, log the error.
+			console.error('Error clearing the Solr index:', error);
+			// Optionally, rethrow the error to allow calling code to handle it.
+			throw error;
 		}
-}
+	}
 
 	/**
 	 * Create
@@ -266,6 +270,62 @@ class StoryblokSolrIndexer {
 		}
 
 		return result;
+	}
+
+	/**
+	 * find AdmiralCloudImageUuid
+	 * @param {*} storyObj 
+	 * @returns {String} | {null} UUID or null
+	 */
+	findAdmiralCloudImageUuid(storyObj) {
+		return this.findFirstOccurrence(storyObj,'admiralCloudImageUuid')
+	}
+
+	/**
+	 * find first occurence of given key in given nested object returns value if found
+	 * @param {*} nestedObj 
+	 * @param {*} key 
+	 * @returns {*} | null
+	 */
+	findFirstOccurrence(nestedObj, key) {
+		// Check if the input is a non-null object
+		if (typeof nestedObj !== 'object' || nestedObj === null) {
+			return null;  // Return null if it's not an object
+		}
+
+		// Check if the key exists in the current object
+		if (key in nestedObj) {
+			return nestedObj[key];  // Return the value if the key is found
+		}
+
+		// Iterate through each key in the object
+		for (const k in nestedObj) {
+			// Ensure that the property belongs to the object itself and not its prototype chain
+			if (nestedObj.hasOwnProperty(k)) {
+				const value = nestedObj[k];
+
+				// If the value is an object, recurse into it
+				if (typeof value === 'object') {
+					const result = this.findFirstOccurrence(value, key);
+					if (result !== null) {
+						return result;  // Return the result if the key is found in the nested object
+					}
+				} else if (Array.isArray(value)) {  // If the value is an array
+					// Iterate through each item in the array
+					for (const item of value) {
+						if (typeof item === 'object') {
+							const result = this.findFirstOccurrence(item, key);
+							if (result !== null) {
+								return result;  // Return the result if the key is found in the nested object within the array
+							}
+						}
+					}
+				}
+			}
+		}
+
+		// Return null if the key is not found in the object or its nested objects/arrays
+		return null;
 	}
 }
 
